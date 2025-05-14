@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "4DrHwjPkFhfwavs6mzm2jORxKqJDUpvNQM+/rAnl/r8apT+59NcbsE854YCXzIZhikrSlNdk+XeJuGguxjZL9Q==",
+  "dgSpecHash": "lU4SIWLxNedcSR++mNR2G3UhoVVKE3Z4EL3c+vmY8r2qF3FWR+CyylokHvX0joM+IdUm1DRBkgtzvMPNsQ98mw==",
   "success": true,
   "projectFilePath": "D:\\Devisha Gajjar\\AssessMent\\WebApp\\WebApp.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\pctr23\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
     "C:\\Users\\pctr23\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\pctr23\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.20\\microsoft.aspnetcore.authentication.jwtbearer.7.0.20.nupkg.sha512",
     "C:\\Users\\pctr23\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

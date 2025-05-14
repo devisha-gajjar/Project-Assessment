@@ -56,3 +56,4 @@ D:\Devisha Gajjar\AssessMent\WebApp\obj\Debug\net7.0\refint\WebApp.dll
 D:\Devisha Gajjar\AssessMent\WebApp\obj\Debug\net7.0\WebApp.pdb
 D:\Devisha Gajjar\AssessMent\WebApp\obj\Debug\net7.0\WebApp.genruntimeconfig.cache
 D:\Devisha Gajjar\AssessMent\WebApp\obj\Debug\net7.0\ref\WebApp.dll
+D:\Devisha Gajjar\AssessMent\WebApp\bin\Debug\net7.0\BCrypt.Net-Core.dll

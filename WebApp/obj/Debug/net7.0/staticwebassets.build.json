@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "dB/G08FXkkEek1BWKWaBLeCwr1w4+hQtsi1ycTWx6KQ=",
+  "Hash": "RBM5/cXkpN18LRyGADwNnI/8WnKHPIx0fV5NSWAPpAU=",
   "Source": "WebApp",
   "BasePath": "_content/WebApp",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\Devisha Gajjar\\AssessMent\\WebApp\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\WebApp.bundle.scp.css"
+    },
+    {
+      "Identity": "D:\\Devisha Gajjar\\AssessMent\\WebApp\\wwwroot\\css\\login.css",
+      "SourceId": "WebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Devisha Gajjar\\AssessMent\\WebApp\\wwwroot\\",
+      "BasePath": "_content/WebApp",
+      "RelativePath": "css/login.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\login.css"
     },
     {
       "Identity": "D:\\Devisha Gajjar\\AssessMent\\WebApp\\wwwroot\\css\\site.css",

@@ -1,17 +1,20 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using WebApp.Entities.ViewModels;
 using WebApp.Entities.Model;
+using WebApp.Service.IService;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using WebApp.Entities.ViewModel;
 
 namespace WebApp.Controllers;
 
 public class LoginController : Controller
 {
-    private readonly ILogger<LoginController> _logger;
+    private readonly ILoginService _loginService;
 
-    public LoginController(ILogger<LoginController> logger)
+    public LoginController(ILoginService loginService)
     {
-        _logger = logger;
+        _loginService = loginService;
     }
 
     public IActionResult Index()
@@ -28,59 +31,54 @@ public class LoginController : Controller
             return View(loginViewModel);
         }
 
-        return View();
+        UserAuthenticateViewModel userAuthenticateViewModel = _loginService.AuthenticateUser(loginViewModel);
 
-        // var(bool, string) userAuthenticateViewModel = _login.AuthenticateUser(loginViewModel);
+        if (!userAuthenticateViewModel.IsValid)
+        {
+            TempData["error"] = userAuthenticateViewModel.Message;
+            return View(loginViewModel);
+        }
+        else
+        {
+            CookieOptions options = new CookieOptions()
+            {
+                Domain = "localhost",
+                Path = "/",
+                Secure = false,
+                Expires = DateTime.Now.AddHours(24),
+                HttpOnly = true,
+                IsEssential = true
+            };
+            Response.Cookies.Append("Token", userAuthenticateViewModel.Token!, options);
 
-        // if (!userAuthenticateViewModel.IsValid)
-        // {
-        //     TempData["error"] = "Invalid Username or Password";
-        //     return View(loginViewModel);
-        // }
+            string role = new JwtSecurityTokenHandler().ReadJwtToken(userAuthenticateViewModel.Token)
+                       .Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value!;
 
-        // if (!userAuthenticateViewModel.IsActive)
-        // {
-        //     TempData["error"] = "Inactive User!!";
-        //     return View(loginViewModel);
-        // }
+            TempData["success"] = "Login success";
 
-        // CookieOptions options = new CookieOptions()
-        // {
-        //     Domain = "localhost",                   // domain for the cookie
-        //     Path = "/",                             // Cookie is available within the entire application
-        //     Secure = false,                         // Ensure the cookie is only sent over HTTPS (set to false for local development)
-        //     Expires = loginViewModel.RememberMe ? DateTime.Now.AddDays(30) : DateTime.Now.AddHours(24), //setiing the expiration based on remember me 
-        //     HttpOnly = true,                        // Prevent client-side scripts from accessing the cookie
-        //     IsEssential = true                      // Indicates the cookie is essential for the application to function
-        // };
-        // Response.Cookies.Append("Token", userAuthenticateViewModel.Token, options);
-
-        // string role = new JwtSecurityTokenHandler().ReadJwtToken(userAuthenticateViewModel.Token)
-        //                .Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value!;
-
-        // if (userAuthenticateViewModel.IsFirstTimeLogin && role != "Chef")
-        // {
-        //     return RedirectToAction("ChangePassword", "custom");
-        // }
-
-        // TempData["success"] = "Login success";
-
-
-
-        // return role switch
-        // {
-        //     "Admin" => RedirectToAction("index", "Dashboard"),
-        //     "Account Manager" => RedirectToAction("index", "Dashboard"),
-        //     "Chef" => RedirectToAction("KOT", "OrderAppKOT"),
-        //     _ => RedirectToAction("index", "Login")
-        // };
+            return role switch
+            {
+                "Admin" => RedirectToAction("index", "Admin"),
+                "User" => RedirectToAction("index", "User"),
+                _ => RedirectToAction("index", "Login")
+            };
+        }
     }
     #endregion
 
-    public IActionResult Privacy()
+    #region Logout
+    public IActionResult Logout()
     {
-        return View();
+        Response.Cookies.Append("Token", "", new CookieOptions
+        {
+            Expires = DateTime.UtcNow.AddDays(-1) // Settting expiration in the past
+        });
+        Response.Cookies.Delete("Token");
+
+        return RedirectToAction("index", "login");
     }
+    #endregion
+
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
