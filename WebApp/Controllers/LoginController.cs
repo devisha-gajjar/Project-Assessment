@@ -40,12 +40,12 @@ public class LoginController : Controller
         }
         else
         {
-            CookieOptions options = new CookieOptions()
+            CookieOptions options = new()
             {
                 Domain = "localhost",
                 Path = "/",
                 Secure = false,
-                Expires = DateTime.Now.AddHours(24),
+                Expires = DateTime.Now.AddHours(2),
                 HttpOnly = true,
                 IsEssential = true
             };
