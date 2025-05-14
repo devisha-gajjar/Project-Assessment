@@ -46,6 +46,7 @@ public class LoginService : ILoginService
             userAuthenticateViewModel.Token = token;
             return userAuthenticateViewModel;
         }
+        userAuthenticateViewModel.IsValid = false;
         userAuthenticateViewModel.Message = "Error at Authenticating User!!";
         return userAuthenticateViewModel;
     }
