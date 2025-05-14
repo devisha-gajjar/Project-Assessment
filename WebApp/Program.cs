@@ -1,6 +1,7 @@
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using WebApp.Entities.Data;
 using WebApp.Repositories.Implementation;
 using WebApp.Repositories.IRepositories;
 using WebApp.Service.Implementation;
@@ -16,8 +17,7 @@ builder.Services.AddScoped<ILoginService, LoginService>();
 builder.Services.AddScoped<ICustomService, CustomService>();
 
 //Db
-
-
+builder.Services.AddDbContext<WebAppFinalContext>();
 
 //All Repositories
 builder.Services.AddScoped<IUserRepository, UserRepository>();
