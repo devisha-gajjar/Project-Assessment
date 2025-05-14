@@ -9,3 +9,6 @@ D:\Devisha Gajjar\AssessMent\WebApp.Entities\obj\Debug\net7.0\WebApp.Entities.dl
 D:\Devisha Gajjar\AssessMent\WebApp.Entities\obj\Debug\net7.0\refint\WebApp.Entities.dll
 D:\Devisha Gajjar\AssessMent\WebApp.Entities\obj\Debug\net7.0\WebApp.Entities.pdb
 D:\Devisha Gajjar\AssessMent\WebApp.Entities\obj\Debug\net7.0\ref\WebApp.Entities.dll
+D:\Devisha Gajjar\AssessMent\WebApp.Entities\bin\Debug\net7.0\WebApp.Entities.runtimeconfig.json
+D:\Devisha Gajjar\AssessMent\WebApp.Entities\obj\Debug\net7.0\WebApp.Entities.csproj.AssemblyReference.cache
+D:\Devisha Gajjar\AssessMent\WebApp.Entities\obj\Debug\net7.0\WebApp.Entities.genruntimeconfig.cache
